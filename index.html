@@ -20,6 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="apple-touch-icon" href="assets/images/logo_beige.png" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <div class="cursor-glow" aria-hidden="true"></div>
@@ -71,56 +72,7 @@
         <h2 data-en="Handmade decoupage pieces" data-ar="قطع ديكوباج يدوية">Handmade decoupage pieces</h2>
         <p data-en="Explore Ruya’s pieces, techniques, and class inspiration" data-ar="اكتشفوا أعمال رؤيا، التقنيات، وأفكار الورش">Explore Ruya’s pieces, techniques, and class inspiration</p>
       </div>
-      <div class="featured-grid reveal">
-        <article class="work-card big" data-category="decor">
-          <img src="assets/images/ruya_hero.jpg" alt="Floral portrait tray" />
-          <div><span data-en="Decor" data-ar="ديكور">Decor</span><strong data-en="Floral Portrait Tray" data-ar="صينية بورتريه زهرية">Floral Portrait Tray</strong></div>
-        </article>
-        <article class="work-card" data-category="jar">
-          <img src="assets/images/ruya_jar.jpg" alt="Lavender decoupage jar" />
-          <div><span data-en="Jar Art" data-ar="فن المرطبانات">Jar Art</span><strong data-en="Lavender Decoupage Jar" data-ar="مرطبان ديكوباج بالخزامى">Lavender Decoupage Jar</strong></div>
-        </article>
-        <article class="work-card" data-category="candles">
-          <img src="assets/images/ruya_candles.jpg" alt="Decorative botanical candles" />
-          <div><span data-en="Candles" data-ar="شموع">Candles</span><strong data-en="Botanical Candle Collection" data-ar="مجموعة شموع نباتية">Botanical Candle Collection</strong></div>
-        </article>
-        <article class="work-card" data-category="tray">
-          <img src="assets/images/ruya_lemon.jpg" alt="Lemon woven tray" />
-          <div><span data-en="Tray Art" data-ar="فن الصواني">Tray Art</span><strong data-en="Lemon Woven Tray" data-ar="صينية ليمون منسوجة">Lemon Woven Tray</strong></div>
-        </article>
-        <article class="work-card" data-category="coasters">
-          <img src="assets/images/ruya_coasters.jpg" alt="Marble decoupage coasters" />
-          <div><span data-en="Coasters" data-ar="كوسترات">Coasters</span><strong data-en="Marble Coaster Set" data-ar="طقم كوسترات رخامي">Marble Coaster Set</strong></div>
-        </article>
-        <article class="work-card" data-category="kitchen">
-          <img src="assets/images/ruya_spoons.png" alt="Lemon decoupage kitchen spoons" />
-          <div><span data-en="Kitchen Art" data-ar="فن المطبخ">Kitchen Art</span><strong data-en="Lemon Kitchen Spoon Set" data-ar="طقم ملاعق ليمون للمطبخ">Lemon Kitchen Spoon Set</strong></div>
-        </article>
-        <article class="work-card" data-category="kitchen">
-          <img src="assets/images/ruya_kitchen_hanger.jpg" alt="Lemon kitchen utensil hanger" />
-          <div><span data-en="Kitchen Art" data-ar="فن المطبخ">Kitchen Art</span><strong data-en="Lemon Kitchen Hanger" data-ar="علاقة مطبخ بالليمون">Lemon Kitchen Hanger</strong></div>
-        </article>
-        <article class="work-card" data-category="decor">
-          <img src="assets/images/ruya_perfume_tray.jpg" alt="Vintage perfume decorative tray" />
-          <div><span data-en="Decor" data-ar="ديكور">Decor</span><strong data-en="Vintage Perfume Tray" data-ar="صينية عطور كلاسيكية">Vintage Perfume Tray</strong></div>
-        </article>
-
-        <article class="work-card" data-category="technique">
-          <img src="assets/images/ruya_shabby_chic_technique.jpg" alt="Shabby chic technique tray" />
-          <div><span data-en="Style" data-ar="ستايل">Style</span><strong data-en="Shabby Chic Style" data-ar="ستايل الشابي شيك">Shabby Chic Style</strong></div>
-        </article>
-
-        <article class="work-card" data-category="technique">
-          <img src="assets/images/ruya_crackle_technique.jpg" alt="Crackle technique tray" />
-          <div><span data-en="Technique" data-ar="تقنية">Technique</span><strong data-en="Crackle Technique" data-ar="تقنية الكراكليه">Crackle Technique</strong></div>
-        </article>
-
-        <article class="work-card" data-category="brush">
-          <img src="assets/images/ruya_vintage_brush.jpg" alt="Vintage brush" />
-          <div><span data-en="Brush Art" data-ar="فن الفرش">Brush Art</span><strong data-en="Vintage Brush" data-ar="فرشاة فينتاج">Vintage Brush</strong></div>
-        </article>
-
-      </div>
+      <div class="featured-grid reveal" id="workGallery" aria-live="polite"></div>
       <button class="view-more-work" id="viewMoreWork" type="button" data-en="View More" data-ar="عرض المزيد">View More</button>
     </section>
 
@@ -194,5 +146,18 @@
 
   <div class="lightbox" id="lightbox" aria-hidden="true"><button id="closeLightbox" aria-label="Close">×</button><img src="" alt="Portfolio preview" /></div>
   <script src="script.js"></script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", function(user) {
+        if (!user) {
+          window.netlifyIdentity.on("login", function() {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>

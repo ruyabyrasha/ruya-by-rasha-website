@@ -22,6 +22,7 @@
       el.textContent = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
     });
     localStorage.setItem('ruya_lang', lang);
+    document.dispatchEvent(new CustomEvent('ruya:language-changed'));
   }
 
   applyLang(localStorage.getItem('ruya_lang') || 'en');
@@ -139,28 +140,93 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
-// Ruya gallery shuffle + view more
+
+// CMS gallery loader: loads data/gallery.json, shuffles first 6, and supports View More
 document.addEventListener('DOMContentLoaded', function(){
-  const grid = document.querySelector('.featured-grid');
+  const grid = document.getElementById('workGallery');
   const btn = document.getElementById('viewMoreWork');
-  if (!grid || !btn) return;
+  if (!grid) return;
 
-  const cards = Array.from(grid.querySelectorAll('.work-card'));
-  if (!cards.length) return;
+  const FIRST_COUNT = 6;
 
-  for (let i = cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [cards[i], cards[j]] = [cards[j], cards[i]];
+  function currentLang(){
+    return document.documentElement.lang === 'ar' ? 'ar' : 'en';
   }
-  cards.forEach(card => grid.appendChild(card));
 
-  const firstCount = 6;
-  const allCards = Array.from(grid.querySelectorAll('.work-card'));
-  allCards.forEach((card, index) => card.classList.toggle('is-hidden-work', index >= firstCount));
-  if (allCards.length <= firstCount) btn.classList.add('is-hidden');
+  function shuffle(items){
+    const arr = items.slice();
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
 
-  btn.addEventListener('click', function(){
-    grid.querySelectorAll('.work-card').forEach(card => card.classList.remove('is-hidden-work'));
-    btn.classList.add('is-hidden');
-  });
+  let allItems = [];
+  let shownAll = false;
+
+  function itemHtml(item){
+    const lang = currentLang();
+    const category = lang === 'ar' ? (item.categoryAr || item.categoryEn || '') : (item.categoryEn || item.categoryAr || '');
+    const title = lang === 'ar' ? (item.titleAr || item.titleEn || '') : (item.titleEn || item.titleAr || '');
+    const image = item.image || '';
+    const alt = item.alt || title;
+    return `
+      <article class="work-card" data-category="${item.category || ''}">
+        <img src="${image}" alt="${alt}" loading="lazy" />
+        <div>
+          <span data-en="${item.categoryEn || ''}" data-ar="${item.categoryAr || ''}">${category}</span>
+          <strong data-en="${item.titleEn || ''}" data-ar="${item.titleAr || ''}">${title}</strong>
+        </div>
+      </article>
+    `;
+  }
+
+  function render(){
+    const visible = shownAll ? allItems : allItems.slice(0, FIRST_COUNT);
+    grid.innerHTML = visible.map(itemHtml).join('');
+
+    if (btn) {
+      btn.classList.toggle('is-hidden', shownAll || allItems.length <= FIRST_COUNT);
+      btn.textContent = currentLang() === 'ar' ? (btn.getAttribute('data-ar') || 'عرض المزيد') : (btn.getAttribute('data-en') || 'View More');
+    }
+
+    // Reattach lightbox behavior for dynamically loaded cards
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox ? lightbox.querySelector('img') : null;
+    grid.querySelectorAll('.work-card img').forEach(function(img){
+      img.addEventListener('click', function(){
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = img.src;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+      });
+    });
+
+    // Trigger reveal animation
+    grid.querySelectorAll('.work-card').forEach(function(card, index){
+      setTimeout(function(){ card.classList.add('in-view'); }, index * 45);
+    });
+  }
+
+  fetch('data/gallery.json', { cache: 'no-store' })
+    .then(res => res.json())
+    .then(items => {
+      allItems = shuffle(Array.isArray(items) ? items : (items.items || []));
+      render();
+    })
+    .catch(() => {
+      grid.innerHTML = '<p class="gallery-error">Gallery could not load</p>';
+      if (btn) btn.classList.add('is-hidden');
+    });
+
+  if (btn) {
+    btn.addEventListener('click', function(){
+      shownAll = true;
+      render();
+    });
+  }
+
+  // Re-render gallery labels after language switch
+  document.addEventListener('ruya:language-changed', render);
 });

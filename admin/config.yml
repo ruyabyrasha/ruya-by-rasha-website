@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "assets/images/uploads"
+
+collections:
+  - name: "gallery_data"
+    label: "Our Work Gallery"
+    files:
+      - name: "gallery"
+        label: "Gallery Items"
+        file: "data/gallery.json"
+        format: "json"
+        fields:
+          - label: "Work Items"
+            name: "items"
+            widget: "list"
+            collapsed: false
+            summary: "{{fields.titleEn}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "Use lowercase words with dashes, example: lemon-kitchen-hanger" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Category Key", name: "category", widget: "string", default: "decor" }
+              - { label: "Category English", name: "categoryEn", widget: "string" }
+              - { label: "Category Arabic", name: "categoryAr", widget: "string" }
+              - { label: "Title English", name: "titleEn", widget: "string" }
+              - { label: "Title Arabic", name: "titleAr", widget: "string" }
+              - { label: "Image Alt Text", name: "alt", widget: "string", required: false }

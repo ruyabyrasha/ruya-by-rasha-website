@@ -1,0 +1,114 @@
+{
+  "items": [
+    {
+      "id": "floral-portrait-tray",
+      "category": "decor",
+      "categoryEn": "Decor",
+      "categoryAr": "ديكور",
+      "titleEn": "Floral Portrait Tray",
+      "titleAr": "صينية بورتريه زهرية",
+      "image": "assets/images/ruya_hero.jpg",
+      "alt": "Floral portrait tray"
+    },
+    {
+      "id": "lavender-decoupage-jar",
+      "category": "jar",
+      "categoryEn": "Jar Art",
+      "categoryAr": "فن المرطبانات",
+      "titleEn": "Lavender Decoupage Jar",
+      "titleAr": "مرطبان ديكوباج بالخزامى",
+      "image": "assets/images/ruya_jar.jpg",
+      "alt": "Lavender decoupage jar"
+    },
+    {
+      "id": "botanical-candle-collection",
+      "category": "candles",
+      "categoryEn": "Candles",
+      "categoryAr": "شموع",
+      "titleEn": "Botanical Candle Collection",
+      "titleAr": "مجموعة شموع نباتية",
+      "image": "assets/images/ruya_candles.jpg",
+      "alt": "Decorative botanical candles"
+    },
+    {
+      "id": "lemon-woven-tray",
+      "category": "tray",
+      "categoryEn": "Tray Art",
+      "categoryAr": "فن الصواني",
+      "titleEn": "Lemon Woven Tray",
+      "titleAr": "صينية ليمون منسوجة",
+      "image": "assets/images/ruya_lemon.jpg",
+      "alt": "Lemon woven tray"
+    },
+    {
+      "id": "marble-coaster-set",
+      "category": "coasters",
+      "categoryEn": "Coasters",
+      "categoryAr": "كوسترات",
+      "titleEn": "Marble Coaster Set",
+      "titleAr": "طقم كوسترات رخامي",
+      "image": "assets/images/ruya_coasters.jpg",
+      "alt": "Marble decoupage coasters"
+    },
+    {
+      "id": "lemon-kitchen-spoon-set",
+      "category": "kitchen",
+      "categoryEn": "Kitchen Art",
+      "categoryAr": "فن المطبخ",
+      "titleEn": "Lemon Kitchen Spoon Set",
+      "titleAr": "طقم ملاعق ليمون للمطبخ",
+      "image": "assets/images/ruya_spoons.png",
+      "alt": "Lemon decoupage kitchen spoons"
+    },
+    {
+      "id": "lemon-kitchen-hanger",
+      "category": "kitchen",
+      "categoryEn": "Kitchen Art",
+      "categoryAr": "فن المطبخ",
+      "titleEn": "Lemon Kitchen Hanger",
+      "titleAr": "علاقة مطبخ بالليمون",
+      "image": "assets/images/ruya_kitchen_hanger.jpg",
+      "alt": "Lemon kitchen utensil hanger"
+    },
+    {
+      "id": "vintage-perfume-tray",
+      "category": "decor",
+      "categoryEn": "Decor",
+      "categoryAr": "ديكور",
+      "titleEn": "Vintage Perfume Tray",
+      "titleAr": "صينية عطور كلاسيكية",
+      "image": "assets/images/ruya_perfume_tray.jpg",
+      "alt": "Vintage perfume decorative tray"
+    },
+    {
+      "id": "shabby-chic-style",
+      "category": "technique",
+      "categoryEn": "Style",
+      "categoryAr": "ستايل",
+      "titleEn": "Shabby Chic Style",
+      "titleAr": "ستايل الشابي شيك",
+      "image": "assets/images/ruya_shabby_chic_technique.jpg",
+      "alt": "Shabby chic technique tray"
+    },
+    {
+      "id": "crackle-technique",
+      "category": "technique",
+      "categoryEn": "Technique",
+      "categoryAr": "تقنية",
+      "titleEn": "Crackle Technique",
+      "titleAr": "تقنية الكراكليه",
+      "image": "assets/images/ruya_crackle_technique.jpg",
+      "alt": "Crackle technique tray"
+    },
+    {
+      "id": "vintage-brush",
+      "category": "brush",
+      "categoryEn": "Brush Art",
+      "categoryAr": "فن الفرش",
+      "titleEn": "Vintage Brush",
+      "titleAr": "فرشاة فينتاج",
+      "image": "assets/images/ruya_vintage_brush.jpg",
+      "alt": "Vintage brush"
+    }
+  ]
+}
