@@ -109,6 +109,36 @@
       "titleAr": "فرشاة فينتاج",
       "image": "assets/images/ruya_vintage_brush.jpg",
       "alt": "Vintage brush"
+    },
+    {
+      "category": "Shell",
+      "id": "horse-shell",
+      "categoryEn": "Shell Art",
+      "categoryAr": "فن على صدف",
+      "titleEn": "Horse Shell",
+      "titleAr": "صدفة الحصان",
+      "alt": "Horse decoupage shell",
+      "image": "assets/images/uploads/whatsapp-image-2026-06-23-at-5.12.54-pm.jpeg"
+    },
+    {
+      "category": "teapot",
+      "id": "floral-teapot",
+      "image": "assets/images/uploads/whatsapp-image-2026-06-23-at-5.10.16-pm.jpeg",
+      "categoryEn": "Teapot Art",
+      "categoryAr": "فن على إبريق",
+      "titleEn": "Floral Teapot",
+      "titleAr": "إبريق مزين بالورود",
+      "alt": "Floral decoupage teapot"
+    },
+    {
+      "category": "tissue-box",
+      "id": "tissue-box",
+      "categoryEn": "Tissue Box",
+      "categoryAr": "علبة مناديل",
+      "titleEn": "Decorated Tissue Box",
+      "titleAr": "علبة مناديل مزينة",
+      "alt": "Decorated decoupage tissue box",
+      "image": "assets/images/uploads/whatsapp-image-2026-06-27-at-12.23.04-pm.jpeg"
     }
   ]
 }
